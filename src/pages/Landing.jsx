@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import bgVideo from "../assets/Landing1.mp4"; // ✅ keep only one
+import bgVideo from "../assets/landing1.mp4"; // ✅ keep only one
 
 export default function Landing({ onDone }) {
   const videoRef = useRef(null);
