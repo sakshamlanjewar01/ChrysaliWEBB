@@ -72,7 +72,7 @@ export default function Navbar() {
           <div className="leading-tight text-left">
             <p className="text-white font-extrabold tracking-wide text-sm sm:text-base">
               CHRYSALIS
-            </p>
+            </p>clear
           </div>
         </button>
 
