@@ -1,6 +1,6 @@
-import bgVideo from "../assets/landing1.mp4";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import bgVideo from "../assets/Landing1.mp4"; // ✅ keep only one
 
 export default function Landing({ onDone }) {
   const videoRef = useRef(null);
@@ -22,8 +22,6 @@ export default function Landing({ onDone }) {
 
     const checkTime = () => {
       if (!video.duration) return;
-
-      // ✅ show text only once near end
       if (video.currentTime >= video.duration - 2) {
         setShowIntroText(true);
         clearInterval(timer);
@@ -65,7 +63,7 @@ export default function Landing({ onDone }) {
               autoPlay
               muted
               playsInline
-              preload="metadata" // ✅ BIG PERFORMANCE FIX
+              preload="metadata"
             >
               <source src={bgVideo} type="video/mp4" />
             </video>
@@ -81,7 +79,7 @@ export default function Landing({ onDone }) {
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
                 >
-                  {/* You can add intro text here if needed */}
+                  {/* Intro text optional */}
                 </motion.div>
               )}
             </AnimatePresence>

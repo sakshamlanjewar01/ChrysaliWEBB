@@ -11,7 +11,6 @@ export default function Home() {
   const [ref, inView] = useInView(0.25);
   const videoRef = useRef(null);
 
-  // ✅ Force autoplay (browser safety fix)
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
@@ -33,7 +32,6 @@ export default function Home() {
       id="home"
       className="scroll-mt-[110px] relative min-h-screen overflow-hidden bg-black"
     >
-      {/* ✅ ONLY VIDEO BACKGROUND */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video
           ref={videoRef}
@@ -48,7 +46,6 @@ export default function Home() {
         </video>
       </div>
 
-      {/* ✅ UI content */}
       <AnimatePresence>
         {inView && (
           <motion.div
@@ -86,16 +83,7 @@ export default function Home() {
                 Chrysalis 2026 is not just a tech fest — it’s an experience.
                 It’s where innovation meets creativity, where ideas transform
                 into reality, and where passionate minds come together to build
-                something unforgettable. From exciting competitions and
-                immersive workshops to inspiring guest sessions and fun cultural
-                moments, Chrysalis is designed to challenge your skills, spark
-                your curiosity, and push you beyond limits. Whether you’re a
-                beginner exploring technology for the first time or an expert
-                looking to showcase your talent, Chrysalis 2026 gives you the
-                perfect stage to learn, compete, connect, and grow. More than
-                events and activities, it’s a celebration of technology,
-                teamwork, and the future — and every participant becomes a part
-                of this amazing journey.{" "}
+                something unforgettable.
               </motion.p>
 
               <motion.div
@@ -106,12 +94,7 @@ export default function Home() {
               >
                 <button
                   onClick={() => scrollToSection("about", 110)}
-                  className="
-                    w-full sm:w-auto
-                    px-7 py-3 rounded-full
-                    bg-white text-black font-semibold
-                    hover:opacity-90 transition
-                  "
+                  className="w-full sm:w-auto px-7 py-3 rounded-full bg-white text-black font-semibold hover:opacity-90 transition"
                 >
                   Explore Events
                 </button>

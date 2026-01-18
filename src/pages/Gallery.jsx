@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef } from "react";
 import useInView from "../utils/useInView";
-import galleryBgVideo from "../assets/gallerybg.mp4";
 
 const optimizeCloudinary = (url, w = 900) => {
   if (!url.includes("res.cloudinary.com")) return url;
@@ -10,7 +9,6 @@ const optimizeCloudinary = (url, w = 900) => {
   return url;
 };
 
-/* ✅ DAY 1: TECH DAY IMAGES (UNIQUE) */
 const TECH_DAY_IMAGES = [
   "https://res.cloudinary.com/dkkivqj4k/image/upload/v1768475957/chrysalis2025_1_blzalr.jpg",
   "https://res.cloudinary.com/dkkivqj4k/image/upload/v1768475957/chrysalis2025_2_h7tztm.jpg",
@@ -38,11 +36,6 @@ function ImageCard({ src }) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-black/10" />
       </div>
-
-      {/* hover shine */}
-      <div className="absolute inset-0 opacity-0 hover:opacity-100 transition duration-300">
-        <div className="absolute inset-0 bg-white/5" />
-      </div>
     </div>
   );
 }
@@ -52,26 +45,17 @@ function MarqueeRow({ images, direction = "left", speed = 28 }) {
 
   return (
     <div className="relative w-full overflow-hidden">
-      {/* fade edges */}
       <div className="pointer-events-none absolute left-0 top-0 h-full w-16 sm:w-24 bg-gradient-to-r from-black to-transparent z-10" />
       <div className="pointer-events-none absolute right-0 top-0 h-full w-16 sm:w-24 bg-gradient-to-l from-black to-transparent z-10" />
 
       <div
         className="marqueeGroup"
-        style={{
-          animation: `${animationName} ${speed}s linear infinite`,
-        }}
+        style={{ animation: `${animationName} ${speed}s linear infinite` }}
       >
         {images.map((src, idx) => (
           <div
             key={idx}
-            className="
-              marqueeItem
-              mx-3 sm:mx-4
-              hover:scale-[1.06]
-              transition-transform duration-300
-              origin-center
-            "
+            className="marqueeItem mx-3 sm:mx-4 hover:scale-[1.06] transition-transform duration-300 origin-center"
           >
             <ImageCard src={src} />
           </div>
@@ -100,7 +84,6 @@ export default function Gallery() {
     tryPlay();
   }, []);
 
-  // ✅ NO DUPLICATES NOW
   const loopImages = useMemo(() => TECH_DAY_IMAGES, []);
 
   return (
@@ -109,7 +92,6 @@ export default function Gallery() {
       id="gallery"
       className="scroll-mt-[110px] min-h-screen bg-black text-white relative overflow-hidden pt-[96px] sm:pt-[110px] pb-16"
     >
-      {/* ✅ VIDEO BACKGROUND */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {inView && (
           <video
@@ -121,13 +103,12 @@ export default function Gallery() {
             preload="auto"
             className="absolute inset-0 w-full h-full object-cover opacity-70"
           >
-            <source src={galleryBgVideo} type="video/mp4" />
+            <source src="/videos/gallerybg.mp4" type="video/mp4" />
           </video>
         )}
         <div className="absolute inset-0 bg-black/55" />
       </div>
 
-      {/* ✅ Styles for marquee */}
       <style>{`
         .marqueeGroup{
           display:flex;
@@ -137,9 +118,6 @@ export default function Gallery() {
         }
         .marqueeGroup:hover{
           animation-play-state: paused !important;
-        }
-        .marqueeItem{
-          will-change: transform;
         }
 
         @keyframes marqueeLeft {
@@ -153,19 +131,15 @@ export default function Gallery() {
         }
       `}</style>
 
-      {/* Content */}
       <div className="relative z-10 w-full">
-        {/* ✅ Header */}
         <div className="w-full px-4 sm:px-6 pb-10 flex justify-center">
           <div className="max-w-5xl w-full text-center">
-           
             <p className="mt-4 text-white/70 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">
               Events highlights of Chrysalis
             </p>
           </div>
         </div>
 
-        {/* ✅ Marquee Rows Container (70% width + centered) */}
         <div className="w-[70vw] mx-auto px-2 sm:px-0 flex flex-col gap-8">
           <MarqueeRow images={loopImages} direction="right" speed={26} />
           <MarqueeRow images={loopImages} direction="left" speed={30} />

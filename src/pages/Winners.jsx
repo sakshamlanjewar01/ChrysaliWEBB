@@ -68,29 +68,14 @@ function WinnerCard({ title, subtitle, name, image, badge }) {
   const optimized = optimizeCloudinary(image, 900);
 
   return (
-    <div
-      className="
-        group relative overflow-hidden
-        rounded-[26px]
-        border border-white/15
-        bg-white/5
-        backdrop-blur-xl
-        shadow-[0px_30px_100px_-50px_rgba(0,0,0,0.95)]
-        transition duration-300
-        hover:-translate-y-2 hover:scale-[1.02]
-      "
-    >
+    <div className="group relative overflow-hidden rounded-[26px] border border-white/15 bg-white/5 backdrop-blur-xl shadow-[0px_30px_100px_-50px_rgba(0,0,0,0.95)] transition duration-300 hover:-translate-y-2 hover:scale-[1.02]">
       <div className="relative w-full h-[240px] sm:h-[280px] overflow-hidden">
         <img
           src={optimized}
           alt={title}
           draggable={false}
           loading="lazy"
-          className="
-            w-full h-full object-cover
-            transition duration-700
-            group-hover:scale-[1.06]
-          "
+          className="w-full h-full object-cover transition duration-700 group-hover:scale-[1.06]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
 
@@ -143,13 +128,8 @@ export default function Winners() {
     <section
       ref={ref}
       id="winners"
-      className="
-        scroll-mt-[110px]
-        min-h-screen bg-black text-white relative overflow-hidden
-        pt-[96px] sm:pt-[110px] pb-16
-      "
+      className="scroll-mt-[110px] min-h-screen bg-black text-white relative overflow-hidden pt-[96px] sm:pt-[110px] pb-16"
     >
-      {/* ✅ VIDEO BACKGROUND */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         {inView && (
           <video
@@ -168,14 +148,12 @@ export default function Winners() {
       </div>
 
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6">
-        {/* HEADER */}
         <div className="text-center mb-14">
           <p className="text-2xl sm:text-4xl font-black tracking-wide">
             Champions of Chrysalis 2026 — tech and sports winners 🏆
           </p>
         </div>
 
-        {/* ✅ TECH DAY */}
         <div className="mb-16">
           <div className="text-center mb-10">
             <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
@@ -201,7 +179,6 @@ export default function Winners() {
           </div>
         </div>
 
-        {/* ✅ OTHER WINNERS */}
         <div className="mb-6 text-center">
           <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
             Sports & Esports Winners
@@ -211,7 +188,6 @@ export default function Winners() {
           </p>
         </div>
 
-        {/* ✅ 2x2 GRID */}
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2">
           {WINNERS_DATA.otherWinners.map((w, idx) => (
             <WinnerCard

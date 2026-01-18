@@ -27,7 +27,6 @@ function MemberBox({
       `}
       style={animate ? { animationDelay: `${delay}ms` } : undefined}
     >
-      {/* ✅ IMAGE (BIGGER) */}
       <div
         className={`
           relative w-full overflow-hidden bg-black/20
@@ -51,11 +50,9 @@ function MemberBox({
           }}
         />
 
-        {/* ✅ overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent opacity-95" />
       </div>
 
-      {/* ✅ INFO (BIGGER FONT + BOLD + DARK WHITE) */}
       <div className={`${big ? "p-5" : "p-4"}`}>
         <p
           className={`
@@ -123,10 +120,9 @@ export default function Members() {
     const cards = [];
     for (const row of sorted) {
       if (row.sr === 1 || row.sr === 2) continue;
-
-      (row.names || []).forEach((nm) => {
-        cards.push(getMemberCard(nm, row.post));
-      });
+      (row.names || []).forEach((nm) =>
+        cards.push(getMemberCard(nm, row.post)),
+      );
     }
 
     return { topTwo: topTwoCards, gridCards: cards };
@@ -136,13 +132,8 @@ export default function Members() {
     <section
       ref={ref}
       id="members"
-      className="
-        scroll-mt-[110px]
-        min-h-screen bg-black text-white relative overflow-hidden
-        pt-[96px] sm:pt-[110px] pb-16
-      "
+      className="scroll-mt-[110px] min-h-screen bg-black text-white relative overflow-hidden pt-[96px] sm:pt-[110px] pb-16"
     >
-      {/* ✅ Background video */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         {inView && (
           <video
@@ -160,7 +151,6 @@ export default function Members() {
         <div className="absolute inset-0 bg-black/60" />
       </div>
 
-      {/* ✅ Animation CSS */}
       <style>{`
         @keyframes memberFadeKey {
           from { opacity: 0; transform: translateY(18px) scale(0.98); }
@@ -173,7 +163,6 @@ export default function Members() {
       `}</style>
 
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6">
-        {/* ✅ Heading Bigger */}
         <div
           className={`mb-12 text-center transition-all duration-700 ${
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
@@ -184,7 +173,6 @@ export default function Members() {
           </p>
         </div>
 
-        {/* ✅ President + VP (BIGGER) */}
         <div className="flex justify-center gap-12 mb-20 flex-wrap">
           <div className="w-[330px] sm:w-[310px]">
             <MemberBox {...topTwo[0]} big animate={inView} delay={0} />
@@ -195,17 +183,7 @@ export default function Members() {
           </div>
         </div>
 
-        {/* ✅ Grid = ONLY 5 PER ROW */}
-        <div
-          className="
-           grid
-    grid-cols-2
-    sm:grid-cols-3
-    md:grid-cols-5
-    gap-x-10 gap-y-12
-    place-items-center
-          "
-        >
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-10 gap-y-12 place-items-center">
           {gridCards.map((card, idx) => (
             <div key={idx} className="w-[210px] sm:w-[220px]">
               <MemberBox

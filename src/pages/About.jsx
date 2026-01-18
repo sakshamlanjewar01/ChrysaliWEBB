@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import useInView from "../utils/useInView";
-import floatingLinesVideo from "../assets/floating-lines.mp4";
+import galleryBgVideo from "../assets/gallerybg.mp4";
 
 const events = [
   {
@@ -39,7 +39,7 @@ function CircularEventGallery({ active }) {
     let rotation = 0;
 
     const animate = () => {
-      rotation -= 0.15; // ✅ RIGHT ➜ LEFT rotation
+      rotation -= 0.15; // RIGHT ➜ LEFT rotation
       if (ringRef.current) {
         ringRef.current.style.transform = `rotateY(${rotation}deg)`;
       }
@@ -52,7 +52,6 @@ function CircularEventGallery({ active }) {
       if (raf) cancelAnimationFrame(raf);
     };
   }, [active]);
-
 
   return (
     <div className="relative w-full max-w-5xl mx-auto sm:mt-14">
@@ -129,7 +128,6 @@ function CircularEventGallery({ active }) {
                       </div>
                     </div>
 
-                    {/* ✅ DIFFERENT SLOGAN FOR EACH EVENT */}
                     <div className="mt-6 text-white/90 text-xs sm:text-sm font-semibold tracking-wide">
                       {e.slogan}
                     </div>
@@ -156,7 +154,7 @@ export default function About() {
       className="scroll-mt-[110px] bg-black text-white"
     >
       <div className="relative w-screen min-h-screen overflow-hidden bg-black pt-[96px] sm:pt-[110px]">
-        {/* ✅ Video background */}
+        {/* Video background */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <video
             autoPlay
@@ -166,10 +164,9 @@ export default function About() {
             preload="auto"
             className="absolute inset-0 w-full h-full object-cover"
           >
-            <source src={floatingLinesVideo} type="video/mp4" />
+            <source src={galleryBgVideo} type="video/mp4" />
           </video>
 
-          {/* overlay for readability */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/90" />
         </div>
 
